@@ -30,7 +30,7 @@ function slideMemories(value) {
     gallery.style.transform = `translateY(${translateY}px)`;
 }
 
-/* 🔐 ACCESS CHECK (Date + Name) */
+/* 🔐 ACCESS CHECK */
 function checkAccess() {
     const name = document
         .getElementById("nameInput")
@@ -39,7 +39,7 @@ function checkAccess() {
 
     const errorMsg = document.getElementById("errorMsg");
 
-    const targetDate = new Date("2026-01-20T00:00:00");
+    const targetDate = new Date("2025-01-20T00:00:00");
     const today = new Date();
 
     const isCorrectName = name === "priya";
@@ -49,16 +49,39 @@ function checkAccess() {
         document.getElementById("lockScreen").classList.add("d-none");
         document.getElementById("mainContent").classList.remove("d-none");
 
-        // 🎵 Start background music AFTER content loads
-        setTimeout(() => {
-            startMusic();
-        }, 500);
+        setTimeout(startMusic, 500);
     } else {
         errorMsg.classList.remove("d-none");
     }
 }
 
-/* ⌨️ ENTER KEY SUPPORT */
+/* ⏳ LIVE COUNTDOWN TIMER */
+function startCountdown() {
+    const targetDate = new Date("2026-01-20T00:00:00").getTime();
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) return;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+            (diff % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+    }, 1000);
+}
+
+/* ⌨️ ENTER KEY + TIMER INIT */
 document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("nameInput");
 
@@ -69,11 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    startCountdown();
 });
 
-
-
-// For modal 
+/* Modal */
 function openMessageModal() {
     const modal = new bootstrap.Modal(
         document.getElementById("messageModal")
@@ -81,13 +104,14 @@ function openMessageModal() {
     modal.show();
 }
 
-// whatsapp button onclikc handler function 
-
+/* WhatsApp */
 function redirectToWhatsApp() {
-    var phoneNumber = "919876543210"; // country code ke saath number
-    var message = "Hello !! Looking Forward to connecting with you."; // default message
-
-    var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+    var phoneNumber = "919876543210";
+    var message = "Hello !! Looking Forward to connecting with you.";
+    var url =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message);
     window.open(url, "_blank");
 }
-
