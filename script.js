@@ -39,7 +39,7 @@ function checkAccess() {
 
     const errorMsg = document.getElementById("errorMsg");
 
-    const targetDate = new Date("2025-01-20T00:00:00");
+    const targetDate = new Date("2026-01-20T00:00:00");
     const today = new Date();
 
     const isCorrectName = name === "priya";
@@ -115,3 +115,4 @@ function redirectToWhatsApp() {
         encodeURIComponent(message);
     window.open(url, "_blank");
 }
+
