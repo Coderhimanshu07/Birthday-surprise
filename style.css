@@ -136,3 +136,15 @@ footer {
 .footer-contact small {
     letter-spacing: 0.5px;
 }
+
+
+/* ⏳ Countdown Timer */
+.countdown-box {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #e91e63;
+    background: #fff5f8;
+    padding: 8px 10px;
+    border-radius: 12px;
+    letter-spacing: 1px;
+}
