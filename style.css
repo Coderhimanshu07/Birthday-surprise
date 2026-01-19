@@ -1,0 +1,138 @@
+/* Background – auto fit on all screens */
+body {
+    background: url("./bg.jpg") no-repeat center center / cover;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Lock box */
+.lock-box {
+    max-width: 360px;
+    width: 100%;
+}
+
+/* Card */
+.card-container {
+    perspective: 1200px;
+}
+
+.birthday-card {
+    width: 360px;
+    height: 620px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(.4, .2, .2, 1);
+}
+
+.birthday-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    backface-visibility: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* Gallery */
+.gallery-wrapper {
+    overflow: hidden;
+    padding: 5px;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.3s ease;
+}
+
+.gallery img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Text */
+.name {
+    color: #e91e63;
+    font-weight: bold;
+}
+
+.message {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.slider-hint {
+    font-size: 0.85rem;
+    color: #e91e63;
+}
+
+
+/* slider CSS */
+/* Base */
+.range-red {
+    width: 100%;
+    height: 6px;
+    background: #ff4d4d;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Chrome, Safari, Edge */
+.range-red::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Firefox */
+.range-red::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Firefox track */
+.range-red::-moz-range-track {
+    background: #ff4d4d;
+    height: 6px;
+    border-radius: 5px;
+}
+
+
+/* Footer */
+
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon {
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+}
+
+.social-icon:hover {
+    color: #e91e63;
+    transform: translateY(-3px);
+}
+
+.footer-contact small {
+    letter-spacing: 0.5px;
+}

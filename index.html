@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Happy Birthday ❤️</title>
+
+        <!-- Bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Background Music -->
+        <audio id="bgMusic" loop>
+            <source src="./clip.mpeg" type="audio/mpeg" />
+        </audio>
+
+        <!-- MAIN VIEWPORT AREA -->
+        <div
+            class="flex-grow-1 d-flex align-items-center justify-content-center"
+        >
+            <!-- 🔒 LOCK SCREEN -->
+            <div
+                id="lockScreen"
+                class="d-flex align-items-center justify-content-center w-100 h-100"
+            >
+                <div class="bg-white p-4 rounded-4 text-center shadow lock-box">
+                    <h3 class="text-danger mb-3">Access Locked 🔒</h3>
+
+                    <p class="small text-muted">
+                        This surprise will open only on
+                        <b>20 January 2026</b>
+                    </p>
+
+                    <input
+                        type="text"
+                        id="nameInput"
+                        class="form-control text-center mb-3"
+                        placeholder="Enter your name"
+                    />
+
+                    <button
+                        class="btn btn-danger w-100"
+                        onclick="checkAccess()"
+                    >
+                        Unlock ❤️
+                    </button>
+
+                    <p id="errorMsg" class="text-danger small mt-2 d-none">
+                        Wrong name or date not reached!
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🎂 MAIN CONTENT -->
+            <div
+                id="mainContent"
+                class="container d-flex align-items-center justify-content-center d-none"
+            >
+                <div class="card-container">
+                    <div class="birthday-card" id="card">
+                        <!-- FRONT -->
+                        <div class="card-face text-center p-3">
+                            <img src="./hand.jpeg" class="card-img mb-3" />
+
+                            <h2>Happy Birthday ❤️</h2>
+                            <h4 class="name">Bachha , Mera Gullu</h4>
+
+                            <p class="message mt-2">
+                                You are my today, my tomorrow, and every
+                                beautiful memory in between. 💕
+                            </p>
+
+                            <div class="d-grid gap-2 mt-3">
+                                <button
+                                    class="btn btn-danger"
+                                    onclick="flipCard()"
+                                >
+                                    Tap for Magic ✨
+                                </button>
+
+                                <button
+                                    class="btn btn-outline-danger"
+                                    onclick="openMessageModal()"
+                                >
+                                    View Message 💌
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back p-2 d-flex flex-column">
+                            <h3 class="text-center mb-2">Our Memories 📸</h3>
+
+                            <div class="gallery-wrapper flex-grow-1">
+                                <div class="gallery" id="gallery">
+                                    <img src="./1.jpeg" />
+                                    <img src="./2.jpeg" />
+                                    <img src="./3.jpeg" />
+                                    <img src="./solo.jpeg" />
+                                </div>
+                            </div>
+
+                            <div class="slider-hint text-center pt-2">
+                                ⬅︎ Slide to view ➡︎
+                            </div>
+
+                            <div style="padding: 3px 0">
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="0"
+                                    class="form-range range-red mt-1"
+                                    oninput="slideMemories(this.value)"
+                                />
+                            </div>
+
+                            <button
+                                class="btn btn-outline-danger mt-2"
+                                onclick="flipCard()"
+                            >
+                                Go Back ❤️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="bg-dark text-white pt-3 pb-2">
+            <div class="container-fluid">
+                <div
+                    class="row align-items-center gy-2 text-center text-md-start"
+                >
+                    <!-- Left -->
+                    <div class="col-md-4">
+                        <small class="text-secondary">
+                            Made by
+                            <br />
+                            <strong class="text-white">Coder Himanshu</strong>
+                        </small>
+                    </div>
+
+                    <!-- Center -->
+                    <div class="col-md-4 text-center">
+                        <small class="text-secondary">
+                            © Copyright <span id="year"></span><br />
+                            All Rights Reserved
+                        </small>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="col-md-4 text-md-end">
+                        <div class="footer-contact">
+                            <small class="text-secondary d-block mb-2">
+                                Contact Developer
+                            </small>
+
+                            <div
+                                class="footer-social d-flex justify-content-center justify-content-md-end gap-3"
+                            >
+                                <a
+                                    href="https://www.instagram.com/_er.himanshu_/"
+                                    target="_blank"
+                                    class="social-icon"
+                                    aria-label="Instagram"
+                                >
+                                    <i class="fab fs-3 fa-instagram"></i>
+                                </a>
+
+                                <a
+                                    href="https://www.linkedin.com/in/coderhimanshu07/"
+                                    target="_blank"
+                                    class="social-icon"
+                                    aria-label="LinkedIn"
+                                >
+                                    <i class="fab fs-3 fa-linkedin"></i>
+                                </a>
+
+                                <a
+                                    onclick="redirectToWhatsApp()"
+                                    target="_blank"
+                                    href="#"
+                                    class="social-icon"
+                                    aria-label="Whatsapp"
+                                >
+                                    <i class="fab fs-3 fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Year Script -->
+        <script>
+            document.getElementById("year").innerText =
+                new Date().getFullYear();
+        </script>
+
+        <!-- Year Script -->
+        <script>
+            document.getElementById("year").innerText =
+                new Date().getFullYear();
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="script.js"></script>
+
+        <!-- 💌 MESSAGE MODAL -->
+        <div
+            class="modal fade"
+            id="messageModal"
+            tabindex="-1"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title text-danger">For You ❤️</h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                        ></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <p>
+                            "Meri jaan, tumhe janamdin ki bahut bahut
+                            shubhkaamnayein! ❤️ Aaj ka din mere liye sabse khaas
+                            hai kyunki aaj hi ke din is duniya mein wo insaan
+                            aaya jisne meri zindagi badal di. In pichle kuch
+                            saalon mein tumne mujhe itna pyaar aur support diya
+                            hai ki mere paas shabdon ki kami hai. Jab bhi main
+                            gira, tumne mujhe sambhaala; jab bhi main udaas tha,
+                            tumne mujhe hasaaya. Main tumhe bata nahi sakta ki
+                            main tumhe kitna maanta hoon. Mere har ek pal mein
+                            tum ho, aur tumhare bina main khud ko adhoora
+                            samajhta hoon. 20 January sirf tumhara birthday
+                            nahi, mere liye us ehsaas ka din hai ki main kitna
+                            khushnaseeb hoon jo tum meri life mein ho. Main
+                            tumse bahut, bahut zyada pyaar karta hoon aur
+                            hamesha aise hi tumhara saath nibhaunga. Khush raho
+                            aur hamesha hasti raho, kyunki tumhari muskurahat hi
+                            meri duniya hai. Happy Birthday, My Love! 🎂❤️"
+                        </p>
+                    </div>
+
+                    <div class="modal-footer border-0">
+                        <button
+                            class="btn btn-danger w-100"
+                            data-bs-dismiss="modal"
+                        >
+                            Close 💌
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
