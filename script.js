@@ -106,7 +106,7 @@ function openMessageModal() {
 
 /* WhatsApp */
 function redirectToWhatsApp() {
-    var phoneNumber = "919876543210";
+    var phoneNumber = "917291933500";
     var message = "Hello !! Looking Forward to connecting with you.";
     var url =
         "https://wa.me/" +
@@ -115,4 +115,5 @@ function redirectToWhatsApp() {
         encodeURIComponent(message);
     window.open(url, "_blank");
 }
+
 
