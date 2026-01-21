@@ -40,6 +40,14 @@ body {
     transform: rotateY(180deg);
 }
 
+.card-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    /* border: 4px solid #e91e63; */
+
+}
+
 /* Gallery */
 .gallery-wrapper {
     overflow: hidden;

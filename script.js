@@ -39,10 +39,10 @@ function checkAccess() {
 
     const errorMsg = document.getElementById("errorMsg");
 
-    const targetDate = new Date("2026-01-20T00:00:00");
+    const targetDate = new Date("2025-01-20T00:00:00");
     const today = new Date();
 
-    const isCorrectName = name === "priya";
+    const isCorrectName = name === "guest";
     const isCorrectDate = today >= targetDate;
 
     if (isCorrectName && isCorrectDate) {
@@ -57,7 +57,7 @@ function checkAccess() {
 
 /* ⏳ LIVE COUNTDOWN TIMER */
 function startCountdown() {
-    const targetDate = new Date("2026-01-20T00:00:00").getTime();
+    const targetDate = new Date("2026-01-21T01:00:00").getTime();
 
     setInterval(() => {
         const now = new Date().getTime();
@@ -106,7 +106,7 @@ function openMessageModal() {
 
 /* WhatsApp */
 function redirectToWhatsApp() {
-    var phoneNumber = "917291933500";
+    var phoneNumber = "919876543210";
     var message = "Hello !! Looking Forward to connecting with you.";
     var url =
         "https://wa.me/" +
@@ -115,5 +115,3 @@ function redirectToWhatsApp() {
         encodeURIComponent(message);
     window.open(url, "_blank");
 }
-
-
